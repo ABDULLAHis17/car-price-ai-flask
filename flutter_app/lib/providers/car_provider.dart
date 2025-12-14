@@ -13,15 +13,21 @@ class CarProvider extends ChangeNotifier {
   bool isLoading = false;
   bool isServerConnected = false;
   String? errorMessage;
+  bool _initialized = false;
 
   CarProvider() {
     _initialize();
   }
 
   Future<void> _initialize() async {
+    if (_initialized) return;
+    _initialized = true;
+    
     await checkServerConnection();
-    await loadCarNames();
-    await loadCarInfo();
+    if (isServerConnected) {
+      await loadCarNames();
+      await loadCarInfo();
+    }
   }
 
   /// فحص اتصال الخادم

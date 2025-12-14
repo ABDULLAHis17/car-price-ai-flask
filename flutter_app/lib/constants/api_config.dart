@@ -4,7 +4,7 @@ class ApiConfig {
   // للإنتاج: https://your-api-domain.com
   
   // ⚠️ غيّر هذا إلى IP الكمبيوتر الخاص بك (مثل: http://192.168.1.100:5000)
-  static const String baseUrl = 'http://10.52.3.107:5000';
+  static const String baseUrl = 'https://car-price-ai-flask.onrender.com';
   
   // Endpoints
   static const String carNames = '$baseUrl/api/car-names';

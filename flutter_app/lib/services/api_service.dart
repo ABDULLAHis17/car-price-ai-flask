@@ -9,42 +9,50 @@ class ApiService {
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiConfig.baseUrl,
-        connectTimeout: ApiConfig.connectTimeout,
-        receiveTimeout: ApiConfig.receiveTimeout,
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
         headers: ApiConfig.headers,
+        validateStatus: (status) => status != null && status < 500,
       ),
+    );
+    
+    // Add logging interceptor
+    _dio.interceptors.add(
+      LoggingInterceptor(),
     );
   }
 
   /// الحصول على قائمة أسماء السيارات
   Future<List<String>> getCarNames() async {
     try {
-      final response = await _dio.get('/car-names');
+      final response = await _dio.get('/api/car-names');
       if (response.statusCode == 200) {
         final data = response.data as Map<String, dynamic>;
         if (data['success'] == true) {
           return List<String>.from(data['names'] ?? []);
         }
       }
-      throw Exception('فشل في تحميل أسماء السيارات');
+      return [];
     } catch (e) {
-      throw Exception('خطأ في الاتصال: $e');
+      print('Error in getCarNames: $e');
+      return [];
     }
   }
 
   /// الحصول على معلومات السيارات (الفئات)
   Future<CarInfo> getCarInfo() async {
     try {
-      final response = await _dio.get('/car-info');
+      final response = await _dio.get('/api/car-info');
       if (response.statusCode == 200) {
         final data = response.data as Map<String, dynamic>;
         if (data['success'] == true) {
           return CarInfo.fromJson(data);
         }
       }
-      throw Exception('فشل في تحميل معلومات السيارات');
+      return CarInfo(fuelTypes: [], sellerTypes: [], transmissions: [], ownerCounts: []);
     } catch (e) {
-      throw Exception('خطأ في الاتصال: $e');
+      print('Error in getCarInfo: $e');
+      return CarInfo(fuelTypes: [], sellerTypes: [], transmissions: [], ownerCounts: []);
     }
   }
 
@@ -52,7 +60,7 @@ class ApiService {
   Future<PredictionResponse> predictByRow(int rowIndex) async {
     try {
       final response = await _dio.post(
-        '/predict-row',
+        '/api/predict-row',
         data: {'row_index': rowIndex},
       );
       if (response.statusCode == 200) {
@@ -68,7 +76,7 @@ class ApiService {
   Future<PredictionResponse> predictManual(CarPredictionRequest request) async {
     try {
       final response = await _dio.post(
-        '/predict-manual',
+        '/api/predict-manual',
         data: request.toJson(),
       );
       if (response.statusCode == 200) {
@@ -83,10 +91,45 @@ class ApiService {
   /// فحص صحة الخادم
   Future<bool> healthCheck() async {
     try {
-      final response = await _dio.get('/health');
-      return response.statusCode == 200;
+      print('🔍 Checking health at: ${ApiConfig.baseUrl}/api/health');
+      final response = await _dio.get('/api/health');
+      print('✅ Health check response: ${response.statusCode} - ${response.data}');
+      if (response.statusCode == 200) {
+        final data = response.data as Map<String, dynamic>;
+        final isHealthy = data['status'] == 'healthy';
+        print('✅ Server is healthy: $isHealthy');
+        return isHealthy;
+      }
+      print('❌ Unexpected status code: ${response.statusCode}');
+      return false;
     } catch (e) {
+      print('❌ Health check error: $e');
       return false;
     }
+  }
+}
+
+class LoggingInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    print('📤 REQUEST: ${options.method} ${options.path}');
+    print('📤 Headers: ${options.headers}');
+    print('📤 Data: ${options.data}');
+    super.onRequest(options, handler);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    print('📥 RESPONSE: ${response.statusCode} ${response.requestOptions.path}');
+    print('📥 Data: ${response.data}');
+    super.onResponse(response, handler);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print('❌ ERROR: ${err.message}');
+    print('❌ Type: ${err.type}');
+    print('❌ Response: ${err.response?.data}');
+    super.onError(err, handler);
   }
 }
