@@ -1,0 +1,29 @@
+name: car_price_predictor
+description: تطبيق التنبؤ بأسعار السيارات - Car Price Prediction App
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # HTTP & Networking
+  dio: ^4.0.0
+  
+  # State Management
+  provider: ^5.0.0
+  
+  # Utilities
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

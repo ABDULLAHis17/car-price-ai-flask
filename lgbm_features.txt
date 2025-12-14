@@ -1,0 +1,21 @@
+km_driven
+engine
+max_power
+seats
+mileage
+name_le
+car_age
+fuel_CNG
+fuel_Diesel
+fuel_LPG
+fuel_Petrol
+seller_Dealer
+seller_Individual
+seller_Trustmark Dealer
+trans_Automatic
+trans_Manual
+owner_0
+owner_1
+owner_2
+owner_3
+owner_4+
