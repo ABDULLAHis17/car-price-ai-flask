@@ -376,5 +376,7 @@ def internal_error(error):
     return jsonify({'success': False, 'error': 'خطأ في الخادم'}), 500
 
 if __name__ == '__main__':
-    logger.info("🚀 بدء تشغيل الخادم على المنفذ 5000...")
-    app.run(debug=False, port=5000, host='0.0.0.0', use_reloader=False)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    logger.info(f"🚀 بدء تشغيل الخادم على المنفذ {port}...")
+    app.run(debug=False, port=port, host='0.0.0.0', use_reloader=False)
