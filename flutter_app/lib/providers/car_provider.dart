@@ -30,7 +30,7 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// فحص اتصال الخادم
+  /// Sunucu bağlantısını kontrol et
   Future<void> checkServerConnection() async {
     try {
       isServerConnected = await _apiService.healthCheck();
@@ -45,7 +45,7 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// تحميل أسماء السيارات
+  /// Araç adlarını yükle
   Future<void> loadCarNames() async {
     try {
       isLoading = true;
@@ -62,7 +62,7 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// تحميل معلومات السيارات
+  /// Araç bilgilerini yükle
   Future<void> loadCarInfo() async {
     try {
       carInfo = await _apiService.getCarInfo();
@@ -73,7 +73,7 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// التنبؤ من صف
+  /// Satırdan tahmin et
   Future<void> predictByRow(int rowIndex) async {
     try {
       isLoading = true;
@@ -90,7 +90,7 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// التنبؤ من إدخال يدوي
+  /// Manuel girişten tahmin et
   Future<void> predictManual(CarPredictionRequest request) async {
     try {
       isLoading = true;
@@ -107,13 +107,13 @@ class CarProvider extends ChangeNotifier {
     }
   }
 
-  /// مسح الأخطاء
+  /// Hataları temizle
   void clearError() {
     errorMessage = null;
     notifyListeners();
   }
 
-  /// مسح آخر تنبؤ
+  /// Son tahmini temizle
   void clearPrediction() {
     lastPrediction = null;
     notifyListeners();

@@ -22,7 +22,7 @@ class ApiService {
     );
   }
 
-  /// الحصول على قائمة أسماء السيارات
+  /// Araç adlarının listesini al
   Future<List<String>> getCarNames() async {
     try {
       final response = await _dio.get('/api/car-names');
@@ -39,7 +39,7 @@ class ApiService {
     }
   }
 
-  /// الحصول على معلومات السيارات (الفئات)
+  /// Araç bilgilerini al (kategoriler)
   Future<CarInfo> getCarInfo() async {
     try {
       final response = await _dio.get('/api/car-info');
@@ -56,7 +56,7 @@ class ApiService {
     }
   }
 
-  /// التنبؤ بسعر السيارة من صف في البيانات
+  /// Veritabanındaki satırdan araç fiyatını tahmin et
   Future<PredictionResponse> predictByRow(int rowIndex) async {
     try {
       final response = await _dio.post(
@@ -72,7 +72,7 @@ class ApiService {
     }
   }
 
-  /// التنبؤ بسعر السيارة من إدخال يدوي
+  /// Manuel girişten araç fiyatını tahmin et
   Future<PredictionResponse> predictManual(CarPredictionRequest request) async {
     try {
       final response = await _dio.post(
@@ -88,7 +88,7 @@ class ApiService {
     }
   }
 
-  /// فحص صحة الخادم
+  /// Sunucu sağlığını kontrol et
   Future<bool> healthCheck() async {
     try {
       print('🔍 Checking health at: ${ApiConfig.baseUrl}/api/health');

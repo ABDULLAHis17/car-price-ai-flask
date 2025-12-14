@@ -1,9 +1,9 @@
 class ApiConfig {
-  // API Base URL - تغيير حسب بيئة التطوير
-  // للاختبار المحلي: http://192.168.x.x:5000
-  // للإنتاج: https://your-api-domain.com
+  // API Base URL - Geliştirme ortamına göre değiştir
+  // Yerel test için: http://192.168.x.x:5000
+  // Üretim için: https://your-api-domain.com
   
-  // ⚠️ غيّر هذا إلى IP الكمبيوتر الخاص بك (مثل: http://192.168.1.100:5000)
+  // ⚠️ Bunu bilgisayarınızın IP'sine değiştir (örn: http://192.168.1.100:5000)
   static const String baseUrl = 'https://car-price-ai-flask.onrender.com';
   
   // Endpoints

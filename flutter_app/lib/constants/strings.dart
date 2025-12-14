@@ -35,36 +35,36 @@ class AppStrings {
   static const String successTitle = '✅ Tahmin Edilen Fiyat';
 
   // Errors
-  static const String errorServerConnection = 'تحذير: لم يتمكن من الاتصال بالخادم';
-  static const String errorLoadingCarNames = 'فشل في تحميل أسماء السيارات';
-  static const String errorLoadingCarInfo = 'فشل في تحميل معلومات السيارات';
-  static const String errorPrediction = 'خطأ في التنبؤ';
-  static const String errorInvalidInput = 'الرجاء إدخال بيانات صحيحة';
-  static const String errorNetworkConnection = 'خطأ في الاتصال بالخادم';
+  static const String errorServerConnection = 'Uyarı: Sunucuya bağlanılamadı';
+  static const String errorLoadingCarNames = 'Araç adları yüklenemedi';
+  static const String errorLoadingCarInfo = 'Araç bilgileri yüklenemedi';
+  static const String errorPrediction = 'Tahmin hatası';
+  static const String errorInvalidInput = 'Lütfen geçerli veriler girin';
+  static const String errorNetworkConnection = 'Sunucu bağlantı hatası';
 
   // Validation Messages
-  static const String validationRequired = 'هذا الحقل مطلوب';
-  static const String validationInvalidNumber = 'يجب أن يكون رقماً صحيحاً';
-  static const String validationInvalidRange = 'القيمة خارج النطاق المسموح';
-  static const String validationSelectOption = 'يجب اختيار قيمة';
+  static const String validationRequired = 'Bu alan gereklidir';
+  static const String validationInvalidNumber = 'Geçerli bir sayı olmalıdır';
+  static const String validationInvalidRange = 'Değer izin verilen aralığın dışında';
+  static const String validationSelectOption = 'Bir değer seçiniz';
 
   // Messages
-  static const String messageRefreshing = 'جاري التحديث...';
-  static const String messageLoading = 'جاري التحميل...';
-  static const String messagePredicting = 'جاري التنبؤ...';
-  static const String messageSuccess = 'تم بنجاح!';
-  static const String messageError = 'حدث خطأ';
+  static const String messageRefreshing = 'Güncelleniyor...';
+  static const String messageLoading = 'Yükleniyor...';
+  static const String messagePredicting = 'Tahmin ediliyor...';
+  static const String messageSuccess = 'Başarılı!';
+  static const String messageError = 'Hata oluştu';
 
   // Buttons
-  static const String buttonRetry = 'إعادة المحاولة';
-  static const String buttonCancel = 'إلغاء';
-  static const String buttonOK = 'موافق';
-  static const String buttonClose = 'إغلاق';
-  static const String buttonRefresh = 'تحديث';
+  static const String buttonRetry = 'Yeniden Dene';
+  static const String buttonCancel = 'İptal';
+  static const String buttonOK = 'Tamam';
+  static const String buttonClose = 'Kapat';
+  static const String buttonRefresh = 'Yenile';
 
   // Status
-  static const String statusHealthy = 'سليم';
-  static const String statusUnhealthy = 'غير سليم';
-  static const String statusLoading = 'جاري التحميل';
-  static const String statusError = 'خطأ';
+  static const String statusHealthy = 'Sağlıklı';
+  static const String statusUnhealthy = 'Sağlıksız';
+  static const String statusLoading = 'Yükleniyor';
+  static const String statusError = 'Hata';
 }

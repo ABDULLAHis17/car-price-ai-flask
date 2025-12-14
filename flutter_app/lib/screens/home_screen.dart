@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // تحميل البيانات عند فتح التطبيق
+    // Uygulama açılırken verileri yükle
     Future.microtask(() {
       final provider = context.read<CarProvider>();
       provider.checkServerConnection();
