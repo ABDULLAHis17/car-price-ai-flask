@@ -379,4 +379,10 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5000))
     logger.info(f"🚀 بدء تشغيل الخادم على المنفذ {port}...")
-    app.run(debug=False, port=port, host='0.0.0.0', use_reloader=False)
+    # استخدم Gunicorn في الإنتاج
+    if os.environ.get('RENDER'):
+        # Render سيستخدم Gunicorn من Procfile
+        app.run(debug=False, port=port, host='0.0.0.0', use_reloader=False)
+    else:
+        # للتطوير المحلي
+        app.run(debug=False, port=port, host='0.0.0.0', use_reloader=False)
