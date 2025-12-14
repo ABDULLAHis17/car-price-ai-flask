@@ -35,12 +35,12 @@ class CarProvider extends ChangeNotifier {
     try {
       isServerConnected = await _apiService.healthCheck();
       if (!isServerConnected) {
-        errorMessage = 'لم يتمكن من الاتصال بالخادم. تأكد من تشغيل Flask Backend على المنفذ 5000';
+        errorMessage = 'Sunucuya bağlanılamadı. Flask Backend\'in çalıştığından emin olun.';
       }
       notifyListeners();
     } catch (e) {
       isServerConnected = false;
-      errorMessage = 'خطأ في الاتصال: $e';
+      errorMessage = 'Bağlantı hatası: $e';
       notifyListeners();
     }
   }
@@ -57,7 +57,7 @@ class CarProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       isLoading = false;
-      errorMessage = 'فشل في تحميل أسماء السيارات: $e';
+      errorMessage = 'Araç adları yüklenemedi: $e';
       notifyListeners();
     }
   }
@@ -68,7 +68,7 @@ class CarProvider extends ChangeNotifier {
       carInfo = await _apiService.getCarInfo();
       notifyListeners();
     } catch (e) {
-      errorMessage = 'فشل في تحميل معلومات السيارات: $e';
+      errorMessage = 'Araç bilgileri yüklenemedi: $e';
       notifyListeners();
     }
   }
@@ -85,7 +85,7 @@ class CarProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       isLoading = false;
-      errorMessage = 'خطأ في التنبؤ: $e';
+      errorMessage = 'Tahmin hatası: $e';
       notifyListeners();
     }
   }
@@ -102,7 +102,7 @@ class CarProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       isLoading = false;
-      errorMessage = 'خطأ في التنبؤ: $e';
+      errorMessage = 'Tahmin hatası: $e';
       notifyListeners();
     }
   }

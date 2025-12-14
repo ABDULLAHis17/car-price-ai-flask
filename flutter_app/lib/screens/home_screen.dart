@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(width: 16),
                         Expanded(
                           child: Text(
-                            'تحذير: لم يتمكن من الاتصال بالخادم',
+                            'Uyarı: Sunucuya bağlanılamadı',
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: AppColors.error,
                               fontWeight: FontWeight.w600,
@@ -113,12 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _buildTabButton(
                     index: 0,
-                    label: '🔢 من الصفوف',
+                    label: '🔢 Veri Tabanından',
                     isSelected: _selectedTabIndex == 0,
                   ),
                   _buildTabButton(
                     index: 1,
-                    label: '📝 إدخال يدوي',
+                    label: '📝 Manuel Giriş',
                     isSelected: _selectedTabIndex == 1,
                   ),
                 ],

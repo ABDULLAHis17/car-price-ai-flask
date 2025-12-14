@@ -237,7 +237,7 @@ class _RowPredictionScreenState extends State<RowPredictionScreen> {
     if (rowIndex == null || rowIndex < 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('الرجاء إدخال رقم صحيح'),
+          content: Text('Lütfen geçerli bir sayı girin'),
           backgroundColor: AppColors.error,
         ),
       );

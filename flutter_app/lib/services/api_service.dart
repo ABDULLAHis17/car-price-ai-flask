@@ -66,9 +66,9 @@ class ApiService {
       if (response.statusCode == 200) {
         return PredictionResponse.fromJson(response.data);
       }
-      throw Exception('فشل في التنبؤ');
+      throw Exception('Tahmin başarısız');
     } catch (e) {
-      throw Exception('خطأ في الاتصال: $e');
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
@@ -82,9 +82,9 @@ class ApiService {
       if (response.statusCode == 200) {
         return PredictionResponse.fromJson(response.data);
       }
-      throw Exception('فشل في التنبؤ');
+      throw Exception('Tahmin başarısız');
     } catch (e) {
-      throw Exception('خطأ في الاتصال: $e');
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 

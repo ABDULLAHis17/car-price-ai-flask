@@ -82,9 +82,9 @@ class HeroSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildFeature('⚡', 'سريع'),
-              _buildFeature('🎯', 'دقيق'),
-              _buildFeature('🔒', 'آمن'),
+              _buildFeature('⚡', 'Hızlı'),
+              _buildFeature('🎯', 'Doğru'),
+              _buildFeature('🔒', 'Güvenli'),
             ],
           ),
         ],
