@@ -17,7 +17,7 @@ class DatabaseService {
     );
   }
 
-  /// الحصول على إحصائيات قاعدة البيانات
+  /// Veritabanı istatistiklerini al
   Future<Map<String, dynamic>> getDatabaseStats() async {
     try {
       final response = await _dio.get('/database/stats');
@@ -27,14 +27,14 @@ class DatabaseService {
           return data['stats'] ?? {};
         }
       }
-      throw Exception('فشل في تحميل إحصائيات قاعدة البيانات');
+      throw Exception('Veritabanı istatistikleri yüklenemedi');
     } catch (e) {
-      AppLogger.error('خطأ في getDatabaseStats', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('getDatabaseStats hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
-  /// الحصول على جميع السيارات
+  /// Tüm araçları al
   Future<List<Map<String, dynamic>>> getAllCars({
     int? limit,
     int offset = 0,
@@ -57,14 +57,14 @@ class DatabaseService {
           return cars.cast<Map<String, dynamic>>();
         }
       }
-      throw Exception('فشل في تحميل السيارات');
+      throw Exception('Araçlar yüklenemedi');
     } catch (e) {
-      AppLogger.error('خطأ في getAllCars', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('getAllCars hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
-  /// الحصول على سيارة محددة بواسطة الفهرس
+  /// İndekse göre belirli bir aracı al
   Future<Map<String, dynamic>> getCarByIndex(int index) async {
     try {
       final response = await _dio.get('/database/car/$index');
@@ -74,14 +74,14 @@ class DatabaseService {
           return data['car'] ?? {};
         }
       }
-      throw Exception('فشل في تحميل السيارة');
+      throw Exception('Araç yüklenemedi');
     } catch (e) {
-      AppLogger.error('خطأ في getCarByIndex', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('getCarByIndex hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
-  /// البحث عن السيارات
+  /// Araçları ara
   Future<List<Map<String, dynamic>>> searchCars({
     required String query,
     String column = 'name_le',
@@ -102,14 +102,14 @@ class DatabaseService {
           return results.cast<Map<String, dynamic>>();
         }
       }
-      throw Exception('فشل في البحث');
+      throw Exception('Arama başarısız');
     } catch (e) {
-      AppLogger.error('خطأ في searchCars', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('searchCars hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
-  /// الحصول على نطاق البيانات لعمود معين
+  /// Belirli bir sütun için veri aralığını al
   Future<Map<String, dynamic>> getDataRange(String column) async {
     try {
       final response = await _dio.get('/database/range/$column');
@@ -119,14 +119,14 @@ class DatabaseService {
           return data['range'] ?? {};
         }
       }
-      throw Exception('فشل في تحميل نطاق البيانات');
+      throw Exception('Veri aralığı yüklenemedi');
     } catch (e) {
-      AppLogger.error('خطأ في getDataRange', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('getDataRange hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 
-  /// الحصول على عدد السيارات الإجمالي
+  /// Toplam araç sayısını al
   Future<int> getTotalCarsCount() async {
     try {
       final response = await _dio.get(
@@ -142,12 +142,12 @@ class DatabaseService {
       }
       return 0;
     } catch (e) {
-      AppLogger.error('خطأ في getTotalCarsCount', e);
+      AppLogger.error('getTotalCarsCount hatası', e);
       return 0;
     }
   }
 
-  /// الحصول على السيارات بالترقيم (Pagination)
+  /// Sayfalanmış araçları al
   Future<Map<String, dynamic>> getPaginatedCars({
     required int page,
     required int pageSize,
@@ -174,10 +174,10 @@ class DatabaseService {
           };
         }
       }
-      throw Exception('فشل في تحميل البيانات');
+      throw Exception('Veriler yüklenemedi');
     } catch (e) {
-      AppLogger.error('خطأ في getPaginatedCars', e);
-      throw Exception('خطأ في الاتصال: $e');
+      AppLogger.error('getPaginatedCars hatası', e);
+      throw Exception('Bağlantı hatası: $e');
     }
   }
 }

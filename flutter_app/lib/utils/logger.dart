@@ -3,21 +3,21 @@ import 'package:flutter/foundation.dart';
 class AppLogger {
   static const String _tag = '🚗 CarPrice';
 
-  /// تسجيل رسالة عادية
+  /// Normal mesaj kaydı
   static void info(String message) {
     if (kDebugMode) {
       print('$_tag [INFO] $message');
     }
   }
 
-  /// تسجيل تحذير
+  /// Uyarı kaydı
   static void warning(String message) {
     if (kDebugMode) {
       print('$_tag [⚠️ WARNING] $message');
     }
   }
 
-  /// تسجيل خطأ
+  /// Hata kaydı
   static void error(String message, [dynamic error, StackTrace? stackTrace]) {
     if (kDebugMode) {
       print('$_tag [❌ ERROR] $message');
@@ -30,14 +30,14 @@ class AppLogger {
     }
   }
 
-  /// تسجيل نجاح
+  /// Başarı kaydı
   static void success(String message) {
     if (kDebugMode) {
       print('$_tag [✅ SUCCESS] $message');
     }
   }
 
-  /// تسجيل API request
+  /// API isteği kaydı
   static void apiRequest(String method, String url, {dynamic body}) {
     if (kDebugMode) {
       print('$_tag [API] $method $url');
@@ -47,7 +47,7 @@ class AppLogger {
     }
   }
 
-  /// تسجيل API response
+  /// API yanıtı kaydı
   static void apiResponse(String method, String url, int statusCode, {dynamic body}) {
     if (kDebugMode) {
       print('$_tag [API] $method $url - Status: $statusCode');
@@ -57,7 +57,7 @@ class AppLogger {
     }
   }
 
-  /// تسجيل API error
+  /// API hata kaydı
   static void apiError(String method, String url, dynamic error) {
     if (kDebugMode) {
       print('$_tag [API ERROR] $method $url');
