@@ -9,8 +9,8 @@ class ApiService {
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiConfig.baseUrl,
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
         headers: ApiConfig.headers,
         validateStatus: (status) => status != null && status < 500,
       ),
@@ -126,7 +126,7 @@ class LoggingInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
+  void onError(DioError err, ErrorInterceptorHandler handler) {
     print('❌ ERROR: ${err.message}');
     print('❌ Type: ${err.type}');
     print('❌ Response: ${err.response?.data}');
